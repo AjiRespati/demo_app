@@ -1,5 +1,7 @@
+import 'package:demo_app/routes/route_names.dart';
 import 'package:demo_app/shared/widgets/liquid_glass_button.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
@@ -67,7 +69,7 @@ class LandingPage extends StatelessWidget {
                         child: LiquidGlassButton(
                           title: 'User App',
                           onPressed: () {
-                            // TODO: User App
+                            context.go(UserLoginRoute);
                           },
                         ),
                       ),
@@ -80,7 +82,7 @@ class LandingPage extends StatelessWidget {
                         child: LiquidGlassButton(
                           title: 'Admin App',
                           onPressed: () {
-                            // TODO: Admin App
+                            context.go(AdminLoginRoute);
                           },
                         ),
                       ),
