@@ -1,4 +1,8 @@
+import 'package:demo_app/pages/home/desktop_home_view.dart';
+import 'package:demo_app/pages/home/mobile_home_view.dart';
+import 'package:demo_app/pages/home/tablet_home_view.dart';
 import 'package:flutter/material.dart';
+
 import '../../core/responsive/responsive_builder.dart';
 
 class HomePage extends StatelessWidget {
@@ -6,57 +10,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Demo App'),
-      ),
-      body: ResponsiveBuilder(
-        mobile: const _MobileView(),
-        tablet: const _TabletView(),
-        desktop: const _DesktopView(),
-      ),
-    );
-  }
-}
-
-class _MobileView extends StatelessWidget {
-  const _MobileView();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'Mobile View',
-        style: TextStyle(fontSize: 24),
-      ),
-    );
-  }
-}
-
-class _TabletView extends StatelessWidget {
-  const _TabletView();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'Tablet View',
-        style: TextStyle(fontSize: 32),
-      ),
-    );
-  }
-}
-
-class _DesktopView extends StatelessWidget {
-  const _DesktopView();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'Desktop View',
-        style: TextStyle(fontSize: 40),
-      ),
+    return ResponsiveBuilder(
+      mobile: const MobileHomeView(),
+      tablet: const TabletHomeView(),
+      desktop: const DesktopHomeView(),
     );
   }
 }
