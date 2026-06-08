@@ -1,5 +1,6 @@
 
 import 'package:demo_app/pages/landing/landing_page.dart';
+import 'package:demo_app/shared/theme/liquid_theme.dart';
 import 'package:flutter/material.dart';
 
 
@@ -11,10 +12,7 @@ class DemoApp extends StatelessWidget {
     return MaterialApp(
       title: 'Demo App',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorSchemeSeed: Colors.blue,
-        useMaterial3: true,
-      ),
+      theme: liquidTheme(),
       home: const LandingPage(),
     );
   }
