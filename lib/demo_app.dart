@@ -1,5 +1,7 @@
+
+import 'package:demo_app/pages/landing/landing_page.dart';
 import 'package:flutter/material.dart';
-import 'pages/home/home_page.dart';
+
 
 class DemoApp extends StatelessWidget {
   const DemoApp({super.key});
@@ -13,7 +15,7 @@ class DemoApp extends StatelessWidget {
         colorSchemeSeed: Colors.blue,
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: const LandingPage(),
     );
   }
 }
