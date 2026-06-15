@@ -1,7 +1,9 @@
 import 'package:demo_app/routes/route_names.dart';
-import 'package:demo_app/shared/widgets/liquid_glass_button.dart';
+// import 'package:demo_app/shared/widgets/liquid_glass_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
+import 'package:liquid_glass_widgets/widgets/interactive/glass_button.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
@@ -19,10 +21,10 @@ class LandingPage extends StatelessWidget {
             ),
           ),
 
-          // Overlay
-          Positioned.fill(
-            child: Container(color: Colors.black.withValues(alpha: 0.45)),
-          ),
+          // // Overlay
+          // Positioned.fill(
+          //   child: Container(color: Colors.black.withValues(alpha: 0.45)),
+          // ),
 
           // Content
           SafeArea(
@@ -66,9 +68,11 @@ class LandingPage extends StatelessWidget {
                       SizedBox(
                         width: double.infinity,
                         // height: 50,
-                        child: LiquidGlassButton(
-                          title: 'User App',
-                          onPressed: () {
+                        child: GlassButton(
+                          icon: Icon(Icons.person),
+                          label: 'User App',
+                          shape: LiquidRoundedRectangle(borderRadius: 10),
+                          onTap: () {
                             context.go(UserLoginRoute);
                           },
                         ),
@@ -79,11 +83,21 @@ class LandingPage extends StatelessWidget {
                       SizedBox(
                         width: double.infinity,
                         // height: 50,
-                        child: LiquidGlassButton(
-                          title: 'Admin App',
-                          onPressed: () {
+                        child: GlassButton.custom(
+                          // icon: Icon(Icons.assignment_ind_outlined),
+                          label: 'Admin App',
+                          shape: LiquidRoundedRectangle(borderRadius: 10),
+
+                          onTap: () {
                             context.go(AdminLoginRoute);
                           },
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(Icons.assignment_ind_outlined),
+                              Text('Admin App'),
+                            ],
+                          ),
                         ),
                       ),
                     ],
