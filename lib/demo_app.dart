@@ -1,5 +1,5 @@
 
-import 'package:demo_app/pages/landing/landing_page.dart';
+import 'package:demo_app/core/router/app_router.dart';
 import 'package:flutter/material.dart';
 
 
@@ -8,14 +8,14 @@ class DemoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Demo App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorSchemeSeed: Colors.blue,
+        colorSchemeSeed: Colors.brown,
         useMaterial3: true,
       ),
-      home: const LandingPage(),
+      routerConfig: appRouter,
     );
   }
 }
