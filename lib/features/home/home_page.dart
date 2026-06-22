@@ -25,10 +25,7 @@ class HomePage extends StatelessWidget {
               return Center(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.all(24),
-                  child: SizedBox(
-                    width: cardWidth,
-                    child: const _HomeCard(),
-                  ),
+                  child: SizedBox(width: cardWidth, child: const _HomeCard()),
                 ),
               );
             },
@@ -45,25 +42,18 @@ class _HomeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GlassCard(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 32,
-        vertical: 28,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 28),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Image.asset(
-            'assets/images/logo.png',
-            height: 200,
-          ),
-
+          Image.asset('assets/images/logo.png', height: 200),
 
           Text(
             'Demo App',
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
           ),
 
           const SizedBox(height: 12),
@@ -74,36 +64,48 @@ class _HomeCard extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyLarge,
           ),
 
-          const SizedBox(height: 40),
+          const SizedBox(height: 24),
 
-          SizedBox(
-            width: double.infinity,
-            height: 56,
-            child: FilledButton.icon(
-              onPressed: () => context.go('/user'),
-              icon: const Icon(Icons.person_outline),
-              label: const Text('User App'),
+          GlassButton.custom(
+            shape: LiquidRoundedRectangle(borderRadius: 32),
+            onTap: () => context.go('/user'),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(Icons.person_outline, color: Colors.white),
+                SizedBox(width: 8),
+                Text(
+                  "User App",
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+              ],
             ),
           ),
 
           const SizedBox(height: 16),
 
-          SizedBox(
-            width: double.infinity,
-            height: 56,
-            child: OutlinedButton.icon(
-              onPressed: () => context.go('/admin'),
-              icon: const Icon(Icons.admin_panel_settings_outlined),
-              label: const Text('Admin App'),
+          GlassButton.custom(
+            shape: LiquidRoundedRectangle(borderRadius: 32),
+            onTap: () => context.go('/admin'),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(
+                  Icons.admin_panel_settings_outlined,
+                  color: Colors.white,
+                ),
+                SizedBox(width: 8),
+                Text(
+                  "Admin App",
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+              ],
             ),
           ),
 
           const SizedBox(height: 32),
 
-          Text(
-            'Version 1.0.0',
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
+          Text('Version 1.0.0', style: Theme.of(context).textTheme.bodySmall),
         ],
       ),
     );
@@ -123,9 +125,9 @@ class _Background extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                Color(0xFFF5F1EA),
-                Color(0xFFEFE8DF),
-                Color(0xFFE7DDD0),
+                Color(0xFFF6F9FC),
+                Color.fromARGB(255, 64, 84, 120),
+                Color.fromARGB(255, 9, 23, 41),
               ],
             ),
           ),

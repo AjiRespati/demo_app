@@ -1,4 +1,4 @@
-import 'package:demo_app/core/contants/app_breakpoints.dart';
+import 'package:demo_app/core/constants/app_breakpoints.dart';
 import 'package:flutter/material.dart';
 
 enum DeviceType { mobile, tablet, desktop }

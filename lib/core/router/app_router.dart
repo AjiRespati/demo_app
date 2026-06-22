@@ -12,7 +12,6 @@ final appRouter = GoRouter(
 
     GoRoute(
       path: '/admin',
-
       builder: (c, s) => const Scaffold(body: Center(child: Text('Admin App'))),
     ),
   ],
