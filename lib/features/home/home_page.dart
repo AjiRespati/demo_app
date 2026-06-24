@@ -1,3 +1,4 @@
+import 'package:demo_app/widgets/background.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
@@ -8,7 +9,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GlassPage(
-      background: const _Background(),
+      background: const Background(),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: SafeArea(
@@ -108,70 +109,6 @@ class _HomeCard extends StatelessWidget {
           Text('Version 1.0.0', style: Theme.of(context).textTheme.bodySmall),
         ],
       ),
-    );
-  }
-}
-
-class _Background extends StatelessWidget {
-  const _Background();
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                Color(0xFFF6F9FC),
-                Color.fromARGB(255, 64, 84, 120),
-                Color.fromARGB(255, 9, 23, 41),
-              ],
-            ),
-          ),
-        ),
-
-        Positioned(
-          top: -120,
-          left: -120,
-          child: Container(
-            width: 320,
-            height: 320,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Color(0x22B08968),
-            ),
-          ),
-        ),
-
-        Positioned(
-          top: 120,
-          right: -80,
-          child: Container(
-            width: 240,
-            height: 240,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Color(0x224A90E2),
-            ),
-          ),
-        ),
-
-        Positioned(
-          bottom: -140,
-          right: -120,
-          child: Container(
-            width: 420,
-            height: 420,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Color(0x2264C8A5),
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

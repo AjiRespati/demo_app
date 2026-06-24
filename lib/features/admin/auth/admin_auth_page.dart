@@ -1,5 +1,6 @@
 import 'package:demo_app/features/admin/auth/widgets/login_form.dart';
 import 'package:demo_app/features/admin/auth/widgets/register_form.dart';
+import 'package:demo_app/widgets/background.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
@@ -33,7 +34,7 @@ class _AdminAuthPageState extends State<AdminAuthPage>
     final isDesktop = width >= 1024;
 
     return GlassPage(
-      background: const _Background(),
+      background: const Background(),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: SafeArea(
