@@ -1,4 +1,5 @@
 import 'package:demo_app/features/admin/auth/admin_auth_page.dart';
+import 'package:demo_app/features/admin/dashboard/admin_dashboard_page.dart';
 import 'package:demo_app/features/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -12,5 +13,9 @@ final appRouter = GoRouter(
     ),
 
     GoRoute(path: '/admin', builder: (c, s) => const AdminAuthPage()),
+    GoRoute(
+      path: '/admin/dashboard',
+      builder: (c, s) => const AdminDashboardPage(),
+    ),
   ],
 );

@@ -2,15 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
 class CustomGlassButton extends StatelessWidget {
-  const CustomGlassButton({this.icon, required this.label, super.key});
+  const CustomGlassButton({
+    this.icon,
+    required this.label,
+    required this.onTap,
+    super.key,
+  });
+
   final Icon? icon;
   final String label;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return GlassButton.custom(
       shape: const LiquidRoundedRectangle(borderRadius: 28),
-      onTap: () {},
+      onTap: onTap,
       // width: double.infinity,
       height: 56,
       child: Row(

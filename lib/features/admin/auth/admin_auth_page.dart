@@ -1,3 +1,4 @@
+import 'package:demo_app/core/responsive/responsive_builder.dart';
 import 'package:demo_app/features/admin/auth/widgets/login_form.dart';
 import 'package:demo_app/features/admin/auth/widgets/register_form.dart';
 import 'package:demo_app/widgets/background.dart';
@@ -45,9 +46,15 @@ class _AdminAuthPageState extends State<AdminAuthPage>
                 constraints: BoxConstraints(maxWidth: isDesktop ? 1000 : 500),
                 child: GlassCard(
                   padding: const EdgeInsets.all(32),
-                  child: isDesktop
-                      ? _DesktopContent(tabController: _tabController)
-                      : _MobileContent(tabController: _tabController),
+                  child: ResponsiveBuilder(
+                    mobile: _MobileContent(tabController: _tabController),
+                    tablet: _MobileContent(tabController: _tabController),
+                    desktop: _DesktopContent(tabController: _tabController),
+                  ),
+
+                  // child: isDesktop
+                  //     ? _DesktopContent(tabController: _tabController)
+                  //     : _MobileContent(tabController: _tabController),
                 ),
               ),
             ),
@@ -135,23 +142,6 @@ class _AuthTabs extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class _Background extends StatelessWidget {
-  const _Background();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Color(0xFFF5F1EA), Color(0xFFEFE8DF), Color(0xFFE7DDD0)],
-        ),
-      ),
     );
   }
 }

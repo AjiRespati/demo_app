@@ -1,4 +1,6 @@
 class AppBreakpoints {
-  static const double mobile = 600;
-  static const double tablet = 1024;
+  static const mobile = 600.0;
+  static const tablet = 1024.0;
+
+  const AppBreakpoints._();
 }

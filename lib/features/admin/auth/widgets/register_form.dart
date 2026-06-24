@@ -1,5 +1,6 @@
 import 'package:demo_app/widgets/custom_glass_button.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:liquid_glass_widgets/widgets/input/glass_text_field.dart';
 
 class RegisterForm extends StatefulWidget {
@@ -57,6 +58,7 @@ class _RegisterFormState extends State<RegisterForm> {
           CustomGlassButton(
             icon: Icon(Icons.person_add_alt_1, color: Colors.white, size: 18),
             label: 'Register',
+            onTap: () => context.go('/'),
           ),
         ],
       ),

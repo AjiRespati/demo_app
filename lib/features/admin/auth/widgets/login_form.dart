@@ -1,5 +1,6 @@
 import 'package:demo_app/widgets/custom_glass_button.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:liquid_glass_widgets/widgets/input/glass_text_field.dart';
 
 class LoginForm extends StatefulWidget {
@@ -47,6 +48,7 @@ class _LoginFormState extends State<LoginForm> {
           CustomGlassButton(
             icon: Icon(Icons.login, color: Colors.white, size: 18),
             label: 'Login',
+            onTap: () => context.go('/admin/dashboard'),
           ),
         ],
       ),
