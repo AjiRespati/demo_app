@@ -78,7 +78,7 @@ class _DesktopContent extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('assets/images/logo.png', width: 220),
+              Image.asset('assets/images/logo.png', height: 160),
               const SizedBox(height: 24),
               Text(
                 'Admin Portal',
@@ -105,7 +105,7 @@ class _MobileContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.asset('assets/images/logo.png', height: 90),
+        Image.asset('assets/images/logo.png', height: 160),
 
         const SizedBox(height: 24),
 

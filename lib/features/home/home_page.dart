@@ -50,74 +50,82 @@ class _HomeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GlassCard(
-      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 28),
-      child: SizedBox(
-        width: width,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.asset('assets/images/logo.png', height: 200),
-        
-            Text(
-              'Demo App',
-              textAlign: TextAlign.center,
-              style: Theme.of(
-                context,
-              ).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
-            ),
-        
-            const SizedBox(height: 12),
-        
-            SelectableText(
-              'marketing@ajirespati.com',
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-        
-            const SizedBox(height: 24),
-        
-            GlassButton.custom(
-              shape: LiquidRoundedRectangle(borderRadius: 32),
-              onTap: () => context.go('/user'),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Icon(Icons.person_outline, color: Colors.white),
-                  SizedBox(width: 8),
-                  Text(
-                    "User App",
-                    style: TextStyle(color: Colors.white, fontSize: 16),
+    return Center(
+      child: SingleChildScrollView(
+        padding: EdgeInsets.all(24),
+        child: SizedBox(
+          width: width,
+          child: GlassCard(
+            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 28),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset('assets/images/logo.png', height: 160),
+
+                Text(
+                  'Demo App',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
                   ),
-                ],
-              ),
-            ),
-        
-            const SizedBox(height: 16),
-        
-            GlassButton.custom(
-              shape: LiquidRoundedRectangle(borderRadius: 32),
-              onTap: () => context.go('/admin'),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Icon(
-                    Icons.admin_panel_settings_outlined,
-                    color: Colors.white,
+                ),
+
+                const SizedBox(height: 12),
+
+                SelectableText(
+                  'marketing@ajirespati.com',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+
+                const SizedBox(height: 24),
+
+                GlassButton.custom(
+                  shape: LiquidRoundedRectangle(borderRadius: 32),
+                  onTap: () => context.go('/user'),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(Icons.person_outline, color: Colors.white),
+                      SizedBox(width: 8),
+                      Text(
+                        "User App",
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                    ],
                   ),
-                  SizedBox(width: 8),
-                  Text(
-                    "Admin App",
-                    style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+
+                const SizedBox(height: 16),
+
+                GlassButton.custom(
+                  shape: LiquidRoundedRectangle(borderRadius: 32),
+                  onTap: () => context.go('/admin'),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(
+                        Icons.admin_panel_settings_outlined,
+                        color: Colors.white,
+                      ),
+                      SizedBox(width: 8),
+                      Text(
+                        "Admin App",
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+
+                const SizedBox(height: 32),
+
+                Text(
+                  'Version 1.0.0',
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              ],
             ),
-        
-            const SizedBox(height: 32),
-        
-            Text('Version 1.0.0', style: Theme.of(context).textTheme.bodySmall),
-          ],
+          ),
         ),
       ),
     );
