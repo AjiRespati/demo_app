@@ -13,6 +13,7 @@ final appRouter = GoRouter(
     ),
 
     GoRoute(path: '/admin', builder: (c, s) => const AdminAuthPage()),
+
     GoRoute(
       path: '/admin/dashboard',
       builder: (c, s) => const AdminDashboardPage(),
