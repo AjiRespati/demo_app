@@ -2,33 +2,53 @@ import 'package:flutter/material.dart';
 
 class AdminSidebar extends StatelessWidget {
   final int selectedIndex;
+  final bool collapsed;
+  final VoidCallback onToggle;
   final ValueChanged<int> onSelected;
 
   const AdminSidebar({
     super.key,
     required this.selectedIndex,
+    required this.collapsed,
+    required this.onToggle,
     required this.onSelected,
   });
 
   @override
   Widget build(BuildContext context) {
-    final items = [
-      ('Dashboard', Icons.dashboard_outlined),
-      ('Users', Icons.people_outline),
-      ('Products', Icons.inventory_2_outlined),
-      ('Settings', Icons.settings_outlined),
-    ];
+    return Column(
+      children: [
+        IconButton(
+          onPressed: onToggle,
+          icon: Icon(collapsed ? Icons.chevron_right : Icons.chevron_left),
+        ),
 
-    return NavigationRail(
-      selectedIndex: selectedIndex,
-      onDestinationSelected: onSelected,
-      labelType: NavigationRailLabelType.all,
-      destinations: items
-          .map(
-            (e) =>
-                NavigationRailDestination(icon: Icon(e.$2), label: Text(e.$1)),
-          )
-          .toList(),
+        Expanded(
+          child: NavigationRail(
+            extended: !collapsed,
+            selectedIndex: selectedIndex,
+            onDestinationSelected: onSelected,
+            destinations: const [
+              NavigationRailDestination(
+                icon: Icon(Icons.dashboard_outlined),
+                label: Text('Dashboard'),
+              ),
+              NavigationRailDestination(
+                icon: Icon(Icons.people_outline),
+                label: Text('Users'),
+              ),
+              NavigationRailDestination(
+                icon: Icon(Icons.inventory_2_outlined),
+                label: Text('Products'),
+              ),
+              NavigationRailDestination(
+                icon: Icon(Icons.settings_outlined),
+                label: Text('Settings'),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

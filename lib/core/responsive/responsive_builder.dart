@@ -1,30 +1,26 @@
-import 'package:demo_app/core/constants/app_breakpoints.dart';
 import 'package:flutter/material.dart';
+import '../constants/app_breakpoints.dart';
+
+class ResponsiveInfo {
+  final double width;
+
+  const ResponsiveInfo(this.width);
+
+  bool get isMobile => width < AppBreakpoints.mobile;
+
+  bool get isTablet =>
+      width >= AppBreakpoints.mobile && width < AppBreakpoints.tablet;
+
+  bool get isDesktop => width >= AppBreakpoints.tablet;
+}
 
 class ResponsiveBuilder extends StatelessWidget {
-  final Widget mobile;
-  final Widget? tablet;
-  final Widget desktop;
+  final Widget Function(BuildContext context, ResponsiveInfo info) builder;
 
-  const ResponsiveBuilder({
-    super.key,
-    required this.mobile,
-    this.tablet,
-    required this.desktop,
-  });
+  const ResponsiveBuilder({super.key, required this.builder});
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.sizeOf(context).width;
-
-    if (width >= AppBreakpoints.tablet) {
-      return desktop;
-    }
-
-    if (width >= AppBreakpoints.mobile) {
-      return tablet ?? mobile;
-    }
-
-    return mobile;
+    return builder(context, ResponsiveInfo(MediaQuery.sizeOf(context).width));
   }
 }

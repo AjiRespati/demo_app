@@ -19,6 +19,7 @@ class AdminDashboardPage extends StatefulWidget {
 
 class _AdminDashboardPageState extends State<AdminDashboardPage> {
   int selectedIndex = 0;
+  bool sidebarCollapsed = false;
 
   final pages = const [
     DashboardPage(),
@@ -30,49 +31,54 @@ class _AdminDashboardPageState extends State<AdminDashboardPage> {
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
-      mobile: GlassPage(
-        background: const Background(),
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          body: GlassCard(
-            margin: const EdgeInsets.all(16),
-            child: pages[selectedIndex],
-          ),
-          bottomNavigationBar: AdminBottomNav(
-            selectedIndex: selectedIndex,
-            onSelected: (value) {
-              setState(() {
-                selectedIndex = value;
-              });
-            },
-          ),
-        ),
-      ),
-      desktop: GlassPage(
-        background: const Background(),
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          body: Row(
-            children: [
-              AdminSidebar(
-                selectedIndex: selectedIndex,
-                onSelected: (value) {
-                  setState(() {
-                    selectedIndex = value;
-                  });
-                },
-              ),
+      builder: (context, info) {
+        return GlassPage(
+          background: const Background(),
+          child: Scaffold(
+            backgroundColor: Colors.transparent,
+            body: info.isMobile
+                ? GlassCard(
+                    margin: const EdgeInsets.all(16),
+                    child: pages[selectedIndex],
+                  )
+                : Row(
+                    children: [
+                      AdminSidebar(
+                        selectedIndex: selectedIndex,
+                        collapsed: sidebarCollapsed,
+                        onToggle: () {
+                          setState(() {
+                            sidebarCollapsed = !sidebarCollapsed;
+                          });
+                        },
+                        onSelected: (value) {
+                          setState(() {
+                            selectedIndex = value;
+                          });
+                        },
+                      ),
 
-              Expanded(
-                child: GlassCard(
-                  margin: const EdgeInsets.all(24),
-                  child: pages[selectedIndex],
-                ),
-              ),
-            ],
+                      Expanded(
+                        child: GlassCard(
+                          margin: const EdgeInsets.all(24),
+                          child: pages[selectedIndex],
+                        ),
+                      ),
+                    ],
+                  ),
+            bottomNavigationBar: info.isMobile
+                ? AdminBottomNav(
+                    selectedIndex: selectedIndex,
+                    onSelected: (value) {
+                      setState(() {
+                        selectedIndex = value;
+                      });
+                    },
+                  )
+                : null,
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

@@ -15,29 +15,16 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         body: SafeArea(
           child: ResponsiveBuilder(
-            mobile: const _HomeCard(width: double.infinity),
-            tablet: const _HomeCard(width: 500),
-            desktop: const _HomeCard(width: 520),
+            builder: (context, info) {
+              return _HomeCard(
+                width: info.isMobile
+                    ? double.infinity
+                    : info.isTablet
+                    ? 500
+                    : 520,
+              );
+            },
           ),
-
-          // child: LayoutBuilder(
-          //   builder: (context, constraints) {
-          //     final width = constraints.maxWidth;
-
-          //     final cardWidth = switch (width) {
-          //       < 600 => width * 0.9,
-          //       < 1024 => 480.0,
-          //       _ => 520.0,
-          //     };
-
-          //     return Center(
-          //       child: SingleChildScrollView(
-          //         padding: const EdgeInsets.all(24),
-          //         child: SizedBox(width: cardWidth, child: const _HomeCard()),
-          //       ),
-          //     );
-          //   },
-          // ),
         ),
       ),
     );

@@ -31,9 +31,6 @@ class _AdminAuthPageState extends State<AdminAuthPage>
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.sizeOf(context).width;
-    final isDesktop = width >= 1024;
-
     return GlassPage(
       background: const Background(),
       child: Scaffold(
@@ -42,21 +39,36 @@ class _AdminAuthPageState extends State<AdminAuthPage>
           child: Center(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(24),
-              child: ConstrainedBox(
-                constraints: BoxConstraints(maxWidth: isDesktop ? 1000 : 500),
-                child: GlassCard(
-                  padding: const EdgeInsets.all(32),
-                  child: ResponsiveBuilder(
-                    mobile: _MobileContent(tabController: _tabController),
-                    tablet: _MobileContent(tabController: _tabController),
-                    desktop: _DesktopContent(tabController: _tabController),
-                  ),
-
-                  // child: isDesktop
-                  //     ? _DesktopContent(tabController: _tabController)
-                  //     : _MobileContent(tabController: _tabController),
-                ),
+              child: ResponsiveBuilder(
+                builder: (context, info) {
+                  return ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: info.isDesktop ? 1000 : 500,
+                    ),
+                    child: GlassCard(
+                      padding: const EdgeInsets.all(32),
+                      child: info.isDesktop
+                          ? _DesktopContent(tabController: _tabController)
+                          : _MobileContent(tabController: _tabController),
+                    ),
+                  );
+                },
               ),
+              // child: ConstrainedBox(
+              //   constraints: BoxConstraints(maxWidth: 1000),
+              //   child: GlassCard(
+              //     padding: const EdgeInsets.all(32),
+              //     child: ResponsiveBuilder(
+              //       mobile: _MobileContent(tabController: _tabController),
+              //       tablet: _MobileContent(tabController: _tabController),
+              //       desktop: _DesktopContent(tabController: _tabController),
+              //     ),
+
+              //     // child: isDesktop
+              //     //     ? _DesktopContent(tabController: _tabController)
+              //     //     : _MobileContent(tabController: _tabController),
+              //   ),
+              // ),
             ),
           ),
         ),
