@@ -1,0 +1,7 @@
+class AppBlur {
+  const AppBlur._();
+
+  static const sm = 8.0;
+  static const md = 12.0;
+  static const lg = 18.0;
+}
