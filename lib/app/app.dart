@@ -1,3 +1,4 @@
+import 'package:demo_app/core/theme/app_theme.dart';
 import 'package:demo_app/features/home/presentation/pages/placeholder_home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -7,9 +8,13 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Demo App',
+      title: 'Glass Admin Kit',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(colorSchemeSeed: Colors.blue, useMaterial3: true),
+
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
+      themeMode: ThemeMode.system,
+
       home: const PlaceholderHomePage(),
     );
   }
